@@ -5,4 +5,4 @@
 1. 使用```git checkout --orphan [分支名]```  来创建保存新项目文件的分支
 2. ```git add .```              -- 加入暂存区
 3. ```git commit -m"提交信息"``` --提交
-4. ```git push orign [分支名]``` -- 推送分支
+4. ```git push origin [分支名]``` -- 推送分支
