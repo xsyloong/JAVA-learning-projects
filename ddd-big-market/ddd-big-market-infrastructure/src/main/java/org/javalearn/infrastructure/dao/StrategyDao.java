@@ -1,6 +1,9 @@
 package org.javalearn.infrastructure.dao;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.javalearn.infrastructure.dao.po.Strategy;
+
+import java.util.List;
 
 /**
  * @Created suyunlong
@@ -10,4 +13,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface StrategyDao {
+
+    List<Strategy> getAll();
+
 }

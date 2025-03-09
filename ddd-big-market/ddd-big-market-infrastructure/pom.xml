@@ -20,7 +20,7 @@
         </dependency>
         <!-- 系统模块 -->
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>org.javalearn</groupId>
             <artifactId>ddd-big-market-domain</artifactId>
         </dependency>
     </dependencies>

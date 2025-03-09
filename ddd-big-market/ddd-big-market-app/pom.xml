@@ -81,11 +81,11 @@
 
         <!-- 工程模块；启动依赖 trigger->domain, infrastructure-->
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>org.javalearn</groupId>
             <artifactId>ddd-big-market-trigger</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>org.javalearn</groupId>
             <artifactId>ddd-big-market-infrastructure</artifactId>
         </dependency>
     </dependencies>
@@ -127,7 +127,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.javalearn.Application</mainClass>
+                    <mainClass>org.javalearn.BigMarket</mainClass>
                     <layout>JAR</layout>
                 </configuration>
             </plugin>
