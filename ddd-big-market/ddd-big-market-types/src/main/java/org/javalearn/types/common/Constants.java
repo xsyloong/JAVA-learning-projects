@@ -6,6 +6,9 @@ public final class Constants {
     public static final String PROJECT_NAME = "big_market";
     public static final String SPLIT = ",";
 
+    /**
+     * 存储在 redis的 key前缀
+     */
     public static final class RedisKey {
         private RedisKey(){}
 
@@ -13,6 +16,9 @@ public final class Constants {
 
     }
 
+    /**
+     * 常用符号
+     */
     public static final class CharacterSymbols {
         private CharacterSymbols() {}
 
