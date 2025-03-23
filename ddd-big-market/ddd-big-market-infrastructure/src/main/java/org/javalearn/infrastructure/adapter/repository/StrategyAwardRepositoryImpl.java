@@ -8,10 +8,12 @@ import org.javalearn.infrastructure.dao.StrategyAwardDao;
 import org.javalearn.infrastructure.dao.po.StrategyAward;
 import org.javalearn.infrastructure.redis.RedisService;
 import org.javalearn.types.common.Constants;
+import org.redisson.api.RMap;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Created suyunlong 
@@ -36,4 +38,13 @@ public class StrategyAwardRepositoryImpl implements StartegyAwardRepository {
         }
         return awardList;
     }
+
+    @Override
+    public void cacheAwardSearchRateMap(Long strategyId, Integer strategySearchRateRange, Map<Integer, Long> awardSearchRateMap) {
+        redisService.setValue(Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + strategyId,strategySearchRateRange);
+        Map<Integer, Long> redisMap = redisService.getMap(Constants.RedisKey.STRATEGY_RATE_TABLE_KEY + strategyId);
+        redisMap.putAll(awardSearchRateMap);
+    }
+
+
 }

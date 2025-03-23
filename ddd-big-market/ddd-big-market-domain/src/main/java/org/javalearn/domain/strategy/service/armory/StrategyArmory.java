@@ -6,4 +6,7 @@ package org.javalearn.domain.strategy.service.armory;
  * @Email loongloongking@gmail.com
  */
 public interface StrategyArmory {
+
+    void assembleStrategyAwardList(Long strategyId);
+
 }
