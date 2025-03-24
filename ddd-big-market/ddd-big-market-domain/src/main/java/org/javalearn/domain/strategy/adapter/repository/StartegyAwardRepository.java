@@ -15,4 +15,8 @@ public interface StartegyAwardRepository {
     List<StrategyAwardEntity> queryListByStrategyId(Long strategyId);
 
     void cacheAwardSearchRateMap(Long strategyId, Integer strategySearchRateRange, Map<Integer, Long> awardSearchRateMap);
+
+    Long getAwardIdByAwardIdx(Long strategyId, Integer awardIdx);
+
+    Integer getRateRangeByStrategyId(Long strategyId);
 }

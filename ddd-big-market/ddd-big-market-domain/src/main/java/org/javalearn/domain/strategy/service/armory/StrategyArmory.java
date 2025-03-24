@@ -9,4 +9,5 @@ public interface StrategyArmory {
 
     void assembleStrategyAwardList(Long strategyId);
 
+    Long getRandomAwardIdByStrategyId(Long strategyId);
 }

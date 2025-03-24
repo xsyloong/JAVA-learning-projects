@@ -8,7 +8,6 @@ import org.javalearn.infrastructure.dao.StrategyAwardDao;
 import org.javalearn.infrastructure.dao.po.StrategyAward;
 import org.javalearn.infrastructure.redis.RedisService;
 import org.javalearn.types.common.Constants;
-import org.redisson.api.RMap;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
@@ -44,6 +43,17 @@ public class StrategyAwardRepositoryImpl implements StartegyAwardRepository {
         redisService.setValue(Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + strategyId,strategySearchRateRange);
         Map<Integer, Long> redisMap = redisService.getMap(Constants.RedisKey.STRATEGY_RATE_TABLE_KEY + strategyId);
         redisMap.putAll(awardSearchRateMap);
+    }
+
+    @Override
+    public Long getAwardIdByAwardIdx(Long strategyId, Integer awardIdx) {
+        Map<Integer, Long> awardRateTable  = redisService.getMap(Constants.RedisKey.STRATEGY_RATE_TABLE_KEY + strategyId);
+        return awardRateTable.get(awardIdx);
+    }
+
+    @Override
+    public Integer getRateRangeByStrategyId(Long strategyId) {
+        return redisService.getValue(Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + strategyId);
     }
 
 

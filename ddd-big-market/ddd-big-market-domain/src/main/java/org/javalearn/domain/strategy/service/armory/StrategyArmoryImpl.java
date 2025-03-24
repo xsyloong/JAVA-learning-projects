@@ -7,6 +7,7 @@ import org.javalearn.domain.strategy.model.entity.StrategyAwardEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.security.SecureRandom;
 import java.util.*;
 
 /**
@@ -18,11 +19,11 @@ import java.util.*;
 @RequiredArgsConstructor
 public class StrategyArmoryImpl implements StrategyArmory{
 
-    private final StartegyAwardRepository startegyAwardRepository;
+    private final StartegyAwardRepository repository;
 
     @Override
     public void assembleStrategyAwardList(Long strategyId) {
-        List<StrategyAwardEntity> strategyAwardList = startegyAwardRepository.queryListByStrategyId(strategyId);
+        List<StrategyAwardEntity> strategyAwardList = repository.queryListByStrategyId(strategyId);
 
         BigDecimal minAwardRate = strategyAwardList.stream()
                                                    .map(StrategyAwardEntity::getAwardRate)
@@ -46,7 +47,13 @@ public class StrategyArmoryImpl implements StrategyArmory{
             strategyAwardSearchRateMap.put(i,strategyAwardSearchRateTables.get(i));
         }
 
-        startegyAwardRepository.cacheAwardSearchRateMap(strategyId, strategyAwardSearchRateTables.size(), strategyAwardSearchRateMap);
+        repository.cacheAwardSearchRateMap(strategyId, strategyAwardSearchRateTables.size(), strategyAwardSearchRateMap);
+    }
+
+    @Override
+    public Long getRandomAwardIdByStrategyId(Long strategyId) {
+        Integer rateRange = repository.getRateRangeByStrategyId(strategyId);
+        return repository.getAwardIdByAwardIdx(strategyId, new SecureRandom().nextInt(rateRange));
     }
 
 
