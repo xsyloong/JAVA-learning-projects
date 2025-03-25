@@ -17,14 +17,18 @@ import java.util.*;
  */
 @Service
 @RequiredArgsConstructor
-public class StrategyArmoryImpl implements StrategyArmory{
+public class StrategyArmoryDispatchImpl implements StrategyArmory, StrategyDispatch{
 
     private final StartegyAwardRepository repository;
 
     @Override
-    public void assembleStrategyAwardList(Long strategyId) {
+    public Boolean assembleStrategyAwardList(Long strategyId) {
         List<StrategyAwardEntity> strategyAwardList = repository.queryListByStrategyId(strategyId);
+        assembleStrategyAwardList(strategyId,strategyAwardList);
+        return Boolean.TRUE;
+    }
 
+    private void assembleStrategyAwardList(Long strategyId,List<StrategyAwardEntity> strategyAwardList){
         BigDecimal minAwardRate = strategyAwardList.stream()
                                                    .map(StrategyAwardEntity::getAwardRate)
                                                    .min(BigDecimal::compareTo).orElse(BigDecimal.ZERO);

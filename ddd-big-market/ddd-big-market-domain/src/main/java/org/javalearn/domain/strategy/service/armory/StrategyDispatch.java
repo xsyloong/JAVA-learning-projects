@@ -2,9 +2,11 @@ package org.javalearn.domain.strategy.service.armory;
 
 /**
  * @Created suyunlong
- * @Date 2025/3/15 18:25
+ * @Date 2025/3/25 00:25
  * @Email loongloongking@gmail.com
  */
-public interface StrategyArmory {
-    Long getRandomAwardIdByStrategyId(Long strategyId);
+public interface StrategyDispatch {
+
+    Boolean assembleStrategyAwardList(Long strategyId);
+
 }
