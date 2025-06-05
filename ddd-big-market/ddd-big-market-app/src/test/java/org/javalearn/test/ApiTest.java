@@ -16,4 +16,6 @@ public class ApiTest {
         log.info("测试完成");
     }
 
+    @Test
+    public void test1() { log.info("success!");}
 }
